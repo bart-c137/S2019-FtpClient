@@ -1,10 +1,8 @@
 # Development Strategy
-The purpose of this document is to capture the basic rules and guidelines to follow when working in this repository.  It is expected everyone follows the rules, however, the guidelines are flexible and people should make use of common sense when deciding when to follow or break away from the guideline.
+This document captures the rules developers must follow while working in this repository.  Intentionally, not every aspect of software development is covered in this document and the ares which are covered are ones where the rules can clearly be enforced.
 
 ## Git Strategy
-Source code management is a vital component of software development.  A disorganized and chaotic repository will ultimately lead to a number of bugs being introduced, reintroducing old bugs, wasted effort by the development team, and ultimately a low quality product.
-
-The strategy below is intended to be a set of **rules** to be followed by everyone.
+Source code management is a vital component of software development.  A disorganized and chaotic repository will ultimately lead to a number of bugs being introduced, reintroducing old bugs, wasted effort by the development team, and ultimately a low quality product.  Even though this document is a set of guidelines, the Git strategy is more of a rule.  I believe proper source management is so important that anyone not following the steps below will not have the pull request approved.
 
 This project follows the *Feature Branch Workflow* as described in [Atlassian Bitbucket](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow), I don't know where the original idea came from but Bitbucket has a very nice overview of it.  The general idea is the ``master`` branch ***always*** contains the latest production code and is used for deployment.  ***All*** work done in separate branches pulled off of ``master`` and then merged back in with a pull request.  This flow is shown below.
 
@@ -33,4 +31,4 @@ The project uses [Taiga](https://taiga.io/) to manage sprints and can be found [
 You should only use the ``story`` branch if you believe you can complete the entire story during the sprint.  Otherwise you should use one of the other branches.
 
 ## Coding Standards
-For the most part the coding standards are rules.
+Coding standards may seem trivial on small teams, but they very important.  Readable and understandable code helps not only the developer currently working on the file, but also other developers who need to use that code, wether that be now or in the future.  This repository follows the [Google Java Style Guide](https://google.github.io/styleguide/javaguide.html) for the Java language.
