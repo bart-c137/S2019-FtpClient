@@ -5,23 +5,59 @@
  */
 package com.sxu.bart.ftpclient.scenes.controllers;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.fxml.Initializable;
+import com.sxu.bart.ftpclient.ftp.FtpServer;
+import java.io.IOException;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 
 /**
  * FXML Controller class
  *
  * @author bartb
  */
-public class MainSceneController implements Initializable {
+public class MainSceneController {
 
+    @FXML
+    private Button tbbtnConnect;
     /**
      * Initializes the controller class.
      */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize() {
         // TODO
     }    
     
+    @FXML
+    private void tbbtnConnect_Click(ActionEvent e) {
+        String host = "speedtest.tele2.net";
+        int port = 21;
+        String user = "anonymous";
+        String password = "any";
+        
+        FtpServer server = new FtpServer();
+        server.setHost(host);
+        server.setPort(port);
+        server.setUser(user);
+        server.setPassword(password);
+        
+        try {
+            server.connect();
+            String[] fileNames = server.getFiles();
+            server.disconnect();
+            
+            Alert alert = new Alert(AlertType.INFORMATION);
+            StringBuilder buffer = new StringBuilder();
+            for(String file : fileNames) {
+                buffer.append(file);
+                buffer.append(System.getProperty("line.separator"));
+            }
+            alert.setContentText(buffer.toString());
+            alert.showAndWait();
+            
+        } catch (IOException ex) {
+            
+        }
+    }
 }
