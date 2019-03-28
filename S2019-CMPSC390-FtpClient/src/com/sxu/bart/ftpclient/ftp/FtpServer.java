@@ -25,6 +25,8 @@ public class FtpServer {
     private IDirectoryManager directoryManager;
     private IFileManager fileManager;
     
+    public FtpServer() {}
+    
     public FtpServer(String host, int port, String user, String password) {
         setHost(host);
         setPort(port);
